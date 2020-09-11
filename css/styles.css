@@ -175,3 +175,6 @@ h1 + p {
   flex-grow: 1;
   margin-right: 0.75em;
 }
+#text{
+  color: white;
+}

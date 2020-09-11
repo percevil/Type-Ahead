@@ -262,20 +262,29 @@ input.addEventListener('input', e => {
     const name = country.name.toLowerCase();
     return name.startsWith(inputValue);
   });
-  console.log(matches);
 
   const listItems = matches.map(country => {
-    return `<li>${country.name}</li>`;
+    return `<li>${country.name}<li\>`;
   });
 
   const ul = document.querySelector('ul');
-  const selection = document.createElement('li');
-  // creates li element
-  const li = document.createTextNode(`${country.name}`);
-  //appends li element to ui list
+  // const selection = document.createElement('li');
 
   // Shows list
-  ul.innerHTML = listItems;
+  ul.innerHTML = listItems.join('');
   ul.removeAttribute('hidden');
   // removes hidden attribute in HTML
+  if (!inputValue) return ul.setAttribute('hidden', true);
+  // hides list when input is empty
+
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.typeahead')) {
+      // If click event is not in the input area
+      ul.setAttribute('hidden', true);
+      // set hidden to TRUE
+    } else {
+      ul.removeAttribute('hidden');
+      // else remove hidden and show list again
+    }
+  });
 });
