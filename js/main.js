@@ -1,5 +1,3 @@
-// List of countries.
-// Scroll past this list to code.
 const countries = [
   { name: 'Afghanistan' },
   { name: 'Aland Islands' },
@@ -250,7 +248,34 @@ const countries = [
   { name: 'Western Sahara' },
   { name: 'Yemen' },
   { name: 'Zambia' },
-  { name: 'Zimbabwe' }
-]
+  { name: 'Zimbabwe' },
+];
 
-// Start writing JavaScript here!
+const typeahead = document.querySelector('.typeahead');
+const input = typeahead.querySelector('input');
+
+input.addEventListener('input', e => {
+  const input = e.target;
+  const inputValue = input.value.trim().toLowerCase();
+
+  const matches = countries.filter(country => {
+    const name = country.name.toLowerCase();
+    return name.startsWith(inputValue);
+  });
+  console.log(matches);
+
+  const listItems = matches.map(country => {
+    return `<li>${country.name}</li>`;
+  });
+
+  const ul = document.querySelector('ul');
+  const selection = document.createElement('li');
+  // creates li element
+  const li = document.createTextNode(`${country.name}`);
+  //appends li element to ui list
+
+  // Shows list
+  ul.innerHTML = listItems;
+  ul.removeAttribute('hidden');
+  // removes hidden attribute in HTML
+});
