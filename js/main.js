@@ -265,6 +265,13 @@ input.addEventListener('input', e => {
 
   const listItems = matches.map(country => {
     return `<li>${country.name}<li\>`;
+
+    // const boldSearchTerms = (string, searchTerms) => {
+    //   const length = searchTerms.length;
+    //   const toBold = string.substring(0, length);
+    //   const restOfString = string.substring(length);
+    //   return `<strong>${toBold}</strong>${restOfString}`;
+    // };
   });
 
   // const userEntered = document.querySelector('ul');
@@ -282,17 +289,23 @@ input.addEventListener('input', e => {
       // If click event is not in the input area
       ul.setAttribute('hidden', true);
       // set hidden to TRUE
-    } else {
-      // ul.clear.inputValue;
-      // else remove hidden and show list again
     }
+  });
 
-    ul.addEventListener('click', event => {
-      if (!event.target.matches('li')) return;
-      const li = event.target;
-      const countryName = li.textContent;
-      input.value = countryName;
-    });
+  ul.addEventListener('click', event => {
+    if (!event.target.matches('li')) return;
+    const li = event.target;
+    const countryName = li.textContent;
+    input.value = countryName;
     ul.setAttribute('hidden', true);
   });
 });
+
+//  Cant seem to get this code to work:
+// This is the bolding of the first three letters of the user input
+const boldSearchTerms = (string, searchTerms) => {
+  const length = searchTerms.length;
+  const toBold = string.substring(0, length);
+  const restOfString = string.substring(length);
+  return `<strong>${toBold}</strong>${restOfString}`;
+};
