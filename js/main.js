@@ -267,9 +267,9 @@ input.addEventListener('input', e => {
     return `<li>${country.name}<li\>`;
   });
 
-  const ul = document.querySelector('ul');
-  // const selection = document.createElement('li');
+  // const userEntered = document.querySelector('ul');
 
+  const ul = typeahead.querySelector('ul');
   // Shows list
   ul.innerHTML = listItems.join('');
   ul.removeAttribute('hidden');
@@ -283,8 +283,16 @@ input.addEventListener('input', e => {
       ul.setAttribute('hidden', true);
       // set hidden to TRUE
     } else {
-      ul.removeAttribute('hidden');
+      // ul.clear.inputValue;
       // else remove hidden and show list again
     }
+
+    ul.addEventListener('click', event => {
+      if (!event.target.matches('li')) return;
+      const li = event.target;
+      const countryName = li.textContent;
+      input.value = countryName;
+    });
+    ul.setAttribute('hidden', true);
   });
 });

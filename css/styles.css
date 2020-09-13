@@ -72,6 +72,7 @@
 }
 
 
+
 html {
   font-family: 'Roboto', Helvetica, sans-serif;
   font-size: 125%;
@@ -174,7 +175,4 @@ h1 + p {
   display: block;
   flex-grow: 1;
   margin-right: 0.75em;
-}
-#text{
-  color: white;
 }
